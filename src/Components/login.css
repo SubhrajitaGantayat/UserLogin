@@ -1,0 +1,42 @@
+.login_parent_div{
+    background-color:black;
+    padding: 5% 30% 5% 30%;
+
+
+    /* border: 2px solid green; */
+}
+.login_first_child{
+    background: linear-gradient(90deg, rgba(254, 254, 254, 0.56) 1.09%, rgba(255, 255, 255, 0.16) 100%);
+    backdrop-filter: blur(25px);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    border-radius: 20px;
+}
+.login_password_div{
+    position:relative;
+    cursor: pointer;
+    /* border:2px solid red; */
+}
+
+.login_eye{
+    position: absolute;
+    top:45px;
+    right:15px;
+    cursor: pointer;
+    /* border:2px solid blue; */
+}
+
+.signup_eye{
+    position: absolute;
+    top:45px;
+    right:15px;
+    cursor: pointer;
+    /* border:2px solid blue; */
+}
+
+.otp_eye{
+    position: absolute;
+    top:6px;
+    right:29px;
+    cursor: pointer;
+    /* border:2px solid blue; */
+}
