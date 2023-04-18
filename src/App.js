@@ -6,16 +6,18 @@ import OtpVerify from './Components/OtpVerify';
 import ForgetPassword from './Components/ForgetPassword';
 import ResetPassword from './Components/ResetPassword';
 import ChangePassword from './Components/ChangePassword';
+import CreateAccount from './Components/CreateAccount'
 
 function App() {
   return (
     <div >
-        <Login/> 
+        {/* <Login/> 
       <Signup/>
       <OtpVerify/>
       <ForgetPassword/>
       <ResetPassword/>
-      <ChangePassword/>
+      <ChangePassword/> */}
+      <CreateAccount/>
     </div>
   );
 }
