@@ -35,8 +35,6 @@ function Signup() {
   const [phonenumber, setPhdata] = useState("");
   const [checkbox, setcheckbox] = useState(false);
 
-  let passwordpattern = /^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&])[A-Za-z\d@$!%?&]{8,}$/;
-
   const handleCheckbox = () => {
     setcheckbox(!checkbox);
   };
@@ -47,14 +45,13 @@ function Signup() {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    
 
     if (
-      email === "" &&
-      password === "" &&
-      userName === "" &&
-      phonenumber === "" &&
-      confirmpassward === ""
+      email.trim() === "" &&
+      password.trim() === "" &&
+      userName.trim() === "" &&
+      phonenumber.trim() === "" &&
+      confirmpassward.trim() === ""
     ) {
       toast({
         title: "Please Fill in the details",
@@ -67,7 +64,7 @@ function Signup() {
       return;
     } else {
       //username validation
-      if (userName === "") {
+      if (userName.trim() === "") {
         toast({
           title: "Please enter username",
           description: "",
@@ -79,19 +76,18 @@ function Signup() {
         return;
       }
       //email validation
-      if (email === "") {
-        if (!email) {
-          toast({
-            title: "Please enter email id",
-            description: "",
-            status: "warning",
-            duration: 3000,
-            isClosable: true,
-            position: "top",
-          });
-          return;
-        }
-      } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
+      if (email.trim() === "") {
+        toast({
+          title: "Please enter email id",
+          description: "",
+          status: "warning",
+          duration: 3000,
+          isClosable: true,
+          position: "top",
+        });
+        return;
+      }
+      if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
         toast({
           title: "Invalid Email Address",
           description: "",
@@ -103,7 +99,7 @@ function Signup() {
         return;
       }
       //phone number validation
-      if (phonenumber === "") {
+      if (phonenumber.trim() === "") {
         if (!"phonenumber") {
           toast({
             title: "Please enter the phonenumber",
@@ -115,7 +111,8 @@ function Signup() {
           });
           return;
         }
-      } else if (phonenumber.length !== 10) {
+      }
+      if (phonenumber.length !== 10) {
         toast({
           title: "Please enter valid Mobile Number",
           description: "",
@@ -127,18 +124,78 @@ function Signup() {
         return;
       }
       //password validation
-      if (password === "") {
-          toast({
-            title: "Please enter your password",
-            description: "",
-            status: "warning",
-            duration: 3000,
-            isClosable: true,
-            position: "top",
-          });
-          return;
-      } 
+      if (password.trim() === "") {
+        toast({
+          title: "Please enter your password",
+          description: "",
+          status: "warning",
+          duration: 3000,
+          isClosable: true,
+          position: "top",
+        });
+        return;
+      }
+      if (!/^(?=.*[A-Z]).*$/.test(password)) {
+        toast({
+          title:
+            "Password must have at least one Uppercase Character",
+          description: "",
+          status: "warning",
+          duration: 3000,
+          isClosable: true,
+          position: "top",
+        });
+        return;
+      }
       
+      if (!/^(?=.*[a-z]).*$/.test(password)) {
+        toast({
+          title:
+            "Password must have at least one Lowercase Character",
+          description: "",
+          status: "warning",
+          duration: 3000,
+          isClosable: true,
+          position: "top",
+        });
+        return;
+      }
+      if (!/^(?=.*[0-9]).*$/.test(password)) {
+        toast({
+          title:
+            "Password must contain at least one Digit",
+          description: "",
+          status: "warning",
+          duration: 3000,
+          isClosable: true,
+          position: "top",
+        });
+        return;
+      }
+      if (!/^(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).*$/.test(password)) {
+        toast({
+          title:
+            "Password must contain at least one Special Symbol",
+          description: "",
+          status: "warning",
+          duration: 3000,
+          isClosable: true,
+          position: "top",
+        });
+        return;
+      }
+      if (!/^.{6,16}$/.test(password)) {
+        toast({
+          title:
+            "Password must be 6-16 Characters Long",
+          description: "",
+          status: "warning",
+          duration: 3000,
+          isClosable: true,
+          position: "top",
+        });
+        return;
+      }
       // if (!passwordpattern.test(password)) {
       //   toast({
       //     title:
@@ -151,7 +208,7 @@ function Signup() {
       //   });
       //   return;
       // }
-      if (confirmpassward === "") {
+      if (confirmpassward.trim() === "") {
         toast({
           title: "Please Fill in Confirm Password.",
           description: "",
@@ -215,7 +272,7 @@ function Signup() {
       // navigate("/login");
     }
   };
-  console.log(password);
+
   return (
     // <Flex align={"center"} justify={"center"} pt="2%">
     //   <Stack>
